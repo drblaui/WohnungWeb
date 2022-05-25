@@ -1,14 +1,5 @@
 import Imap from 'imap';
-import fs from 'fs';
-import {
-	inspect
-} from 'util';
-import {
-	parse
-} from 'node-html-parser'
-import {
-	Stream
-} from 'nodemailer/lib/xoauth2';
+
 require('dotenv').config();
 
 const linkRegexes = [
@@ -44,6 +35,7 @@ export function getLinks(callback: ((arg0: RegExpMatchArray) => void)) {
 				});
 
 				f.on('message', (msg, _seqno) => {
+					//TODO: Mark as read
 					msg.on('body', (stream, _info) => {
 						let buffer = '';
 
