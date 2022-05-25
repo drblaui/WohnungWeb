@@ -1,0 +1,24 @@
+{
+  "name": "formular-autofill",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "ts-node ./src/index.ts",
+    "build": "tsc"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/imap": "^0.8.35",
+    "@types/nodemailer": "^6.4.4",
+    "ts-node": "^10.8.0",
+    "typescript": "^4.7.2"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.1",
+    "imap": "^0.8.19",
+    "node-html-parser": "^5.3.3",
+    "playwright": "^1.22.2"
+  }
+}
