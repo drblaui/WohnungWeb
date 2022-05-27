@@ -19,16 +19,25 @@ export function getLinks(callback: ((arg0: RegExpMatchArray) => void)) {
 	});
 	imap.once('ready', () => {
 		imap.status('Wohnung', (err, status) => {
-			if (err) throw err;
+			if (err) {
+				console.log("Err while getting folder");
+				throw err;
+			} 
 			if (status.messages.unseen === 0) {
 				console.log("Nothing new");
 				imap.end();
 			}
 		});
 		imap.openBox('Wohnung', false, (err, _box) => {
-			if (err) throw err;
+			if (err) {
+				console.log("Err while opening folder");
+				throw err;
+			}
 			imap.search(['UNSEEN'], (err, res) => {
-				if (err) throw err;
+				if (err) {
+					console.log("Err while searching");	
+					throw err
+				}
 
 				//Gets all body text
 				let f = imap.fetch(res, {
@@ -56,7 +65,10 @@ export function getLinks(callback: ((arg0: RegExpMatchArray) => void)) {
 									//Mark as seen
 									msg.once('attributes', (attrs) => {
 										imap.addFlags(attrs.uid, ['\\Seen'], (err) =>{
-											if (err) throw err;
+											if (err) {
+												console.log("Err while marking as seen");
+												throw err;
+											}
 										});
 									});
 								}
