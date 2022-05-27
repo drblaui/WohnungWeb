@@ -9,7 +9,7 @@ const linkRegexes = [
 
 export function getLinks(callback: ((arg0: RegExpMatchArray) => void)) {
 	let links: RegExpMatchArray =[];
-	console.log(process.env.MAIL_USER)
+
 	let imap = new Imap({
 		user: process.env.MAIL_USER || '',
 		password: process.env.MAIL_PASS || '',
