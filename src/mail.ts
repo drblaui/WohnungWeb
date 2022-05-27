@@ -2,13 +2,13 @@ import Imap from 'imap';
 
 require('dotenv').config();
 
+//All links of forms
 const linkRegexes = [
 	/https:\/\/app.wohnungshelden.de\/\d*\/\d*\/property\/application\/form\/\d*\/\d*\/\d*/g
 ];
 
 export function getLinks(callback: ((arg0: RegExpMatchArray) => void)) {
 	let links: RegExpMatchArray =[];
-	let done = false;
 	let imap = new Imap({
 		user: process.env.MAIL_USER || '',
 		password: process.env.MAIL_PASS || '',
@@ -24,7 +24,7 @@ export function getLinks(callback: ((arg0: RegExpMatchArray) => void)) {
 				imap.end();
 			}
 		});
-		imap.openBox('Wohnung', true, (err, box) => {
+		imap.openBox('Wohnung', false, (err, _box) => {
 			if (err) throw err;
 			imap.search(['UNSEEN'], (err, res) => {
 				if (err) throw err;
@@ -35,7 +35,6 @@ export function getLinks(callback: ((arg0: RegExpMatchArray) => void)) {
 				});
 
 				f.on('message', (msg, _seqno) => {
-					//TODO: Mark as read
 					msg.on('body', (stream, _info) => {
 						let buffer = '';
 
@@ -52,15 +51,21 @@ export function getLinks(callback: ((arg0: RegExpMatchArray) => void)) {
 								if (matches) {
 									matches = removeDuplicates(matches);
 									links = links.concat(matches);
+
+									//Mark as seen
+									msg.once('attributes', (attrs) => {
+										imap.addFlags(attrs.uid, ['\\Seen'], (err) =>{
+											if (err) throw err;
+										});
+									});
 								}
-							})
-						})
-					})
+							});
+						});
+					});
 				});
 				f.once('end', () => {
 					imap.end();
 					callback(links);
-					done = true;
 				});
 			});
 		});
