@@ -68,7 +68,7 @@ getLinks((links) => {
 			//For debug, shows you result page
 			//await page.screenshot({path: `${i}.png`, fullPage: true});
 			//Accept
-			//await page.click('#send-applicant-form-button');
+			await page.click('#send-applicant-form-button');
 			await page.waitForTimeout(200);
 			await browser.close();
 			console.log("Sent form");
