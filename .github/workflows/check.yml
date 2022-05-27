@@ -17,4 +17,23 @@ jobs:
           cache: 'npm'
       - run: npm ci
       - run: npm start
+    env:
+      MAIL_IMAP_HOST: ${{secrets.MAIL_IMAP_HOST}}
+      MAIL_IMAP_PORT: ${{secrets.MAIL_IMAP_PORT}}
+      MAIL_USER: ${{secrets.MAIL_USER}}
+      MAIL_PASS: ${{secrets.MAIL_PASS}}
+      MAIL_TLS: ${{secrets.MAIL_TLS}}
+      NUM_GROWN_UPS: ${{secrets.NUM_GROWN_UPS}}
+      NUM_KIDS: ${{secrets.NUM_KIDS}}
+      TYPE_EMPLOYMENT: ${{secrets.TYPE_EMPLOYMENT}}
+      INCOME: ${{secrets.INCOME}}
+      MOVE_IN_DATE: ${{secrets.MOVE_IN_DATE}}
+      HAS_WBS: ${{secrets.HAS_WBS}}
+      WBS_VALID_DATE: ${{secrets.WBS_VALID_DATE}}
+      WBS_NUM_ROOMS: ${{secrets.WBS_NUM_ROOMS}}
+      HAS_PETS: ${{secrets.HAS_PETS}}
+      IS_COMBAT_DOG: ${{secrets.IS_COMBAT_DOG}}
+      PENDING_FLAT_LOSS: ${{secrets.PENDING_FLAT_LOSS}}
+      FIRST_FLAT: ${{secrets.FIRST_FLAT}}
+      HAS_M_SLIP: ${{secrets.HAS_M_SLIP}}
       
