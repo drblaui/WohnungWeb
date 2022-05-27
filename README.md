@@ -6,7 +6,7 @@ Current supported forms are:
 
 ## How to use
 <b>IMPORTANT:</b> The Code Assumes that all mails are in a folder called "Wohnung". If you want to change it, change the code accordingly
-1. Fork this repository
+1. [Make your copy from the template](https://github.com/drblaui/WohnungWeb/generate)
 2. Add all information from the `.env` File as [Github Secrets](https://docs.github.com/en/github-ae@latest/rest/actions/secrets) or if you don't care about the information being exposed, you can also just write them directly into the [workflow file](./.github/workflows/check.yml)
 3. Thats it. Your new repository should now check your email every 5 Minutes for a new link
 
