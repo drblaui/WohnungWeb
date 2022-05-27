@@ -1,5 +1,5 @@
 # WohnungWeb
-is a Typescript based automatic form filler for many different Online Forms of German Housing Companies.
+is a Typescript based form filler that utilizes [node-imap](https://github.com/mscdex/node-imap) and [playwright](https://www.npmjs.com/package/playwright) to automatically fill questionnaires for many different Online Forms of German Housing Companies.
 
 Current supported forms are:
 - GeWoBag
