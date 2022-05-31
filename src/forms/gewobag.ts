@@ -1,7 +1,9 @@
 import playwright from "playwright";
 import formInfo from "../env_handler";
 
-export async function gewobagAutoFill(playwrightPage: playwright.Page) {
+export async function gewobagAutoFill(browser: playwright.Browser, link: string) {
+	const playwrightPage = await browser.newPage();
+	await playwrightPage.goto(link);
 	//This is strictly for wohnungshelden and breaks the second they change the site
 	const cookieButton = ".cn-buttons > button";
 	const cookieModal = await playwrightPage.$(".cookie-modal");
@@ -55,7 +57,7 @@ export async function gewobagAutoFill(playwrightPage: playwright.Page) {
 	//Datenschutz
 	await playwrightPage.click('#formly_5_checkbox_dataPrivacy_9');
 	//For debug, shows you result page
-	//await playwrightPage.screenshot({path: `${i}.png`, fullPage: true});
+	//await playwrightPage.screenshot({path: `${link.split("/")[3]}.png`, fullPage: true});
 	//Accept
 	await playwrightPage.click('#send-applicant-form-button');
 }
