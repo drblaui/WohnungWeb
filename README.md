@@ -3,6 +3,7 @@ is a Typescript based form filler that utilizes [node-imap](https://github.com/m
 
 Current supported forms are:
 - GeWoBag
+- DeGeWo
 
 ## How to use
 <b>IMPORTANT:</b> The Code Assumes that all mails are in a folder called "Wohnung". If you want to change it, change the code accordingly
