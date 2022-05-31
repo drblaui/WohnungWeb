@@ -9,6 +9,7 @@ export const formInfo = {
 	wbs: process.env.HAS_WBS === 'true',
 	wbs_date: process.env.WBS_VALID_DATE || '01.01.1970',
 	wbs_rooms: process.env.WBS_NUM_ROOMS || '1',
+	could_get_wbs: process.env.COULD_GET_WBS === 'true',
 	pets: process.env.HAS_PETS === 'true',
 	combat_dog: process.env.IS_COMBAT_DOG === 'true',
 	pending_flat_loss: process.env.PENDING_FLAT_LOSS === 'true',

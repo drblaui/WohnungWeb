@@ -1,10 +1,10 @@
 import Imap from 'imap';
 
 require('dotenv').config();
-
 //All links of forms
 const linkRegexes = [
-	/https:\/\/app.wohnungshelden.de\/\d*\/\d*\/property\/application\/form\/\d*\/\d*\/\d*/g
+	/https:\/\/app.wohnungshelden.de\/\d*\/\d*\/property\/application\/form\/\d*\/\d*\/\d*/g,
+	/https:\/\/vermietung.degewo.de\/\d+\/\d+\/property\/application\/form\/\d+\/\d+\/\d+/g
 ];
 
 export function getLinks(callback: ((arg0: RegExpMatchArray) => void)) {
@@ -64,6 +64,7 @@ export function getLinks(callback: ((arg0: RegExpMatchArray) => void)) {
 
 									//Mark as seen
 									msg.once('attributes', (attrs) => {
+										if(process.env.DEV === "true") return;
 										imap.addFlags(attrs.uid, ['\\Seen'], (err) =>{
 											if (err) {
 												console.log("Err while marking as seen");
