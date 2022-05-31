@@ -12,16 +12,13 @@ getLinks((links) => {
 		console.log(`Opening Link ${links[i]}`);
 		(async () => {
 			const browser = await playwright.chromium.launch();
-			const page = await browser.newPage();
-			await page.goto(links[i]);
 			if(links[i].includes('wohnungshelden')) {
 				//Could break if this is not unique for gewobag
-				await gewobagAutoFill(page);
+				await gewobagAutoFill(browser, links[i]);
 			}
 			else if(links[i].includes('degewo')) {
-				await degewoAutoFill(page);
+				await degewoAutoFill(browser, links[i]);
 			}
-			await page.waitForTimeout(200);
 			await browser.close();
 			console.log("Sent form");
 		})();
