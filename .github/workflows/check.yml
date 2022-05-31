@@ -1,6 +1,8 @@
 name: Autofill Forms
 
 on:
+  pull_request: 
+    branches: [ main ]
   schedule:
     - cron: "*/5 * * * *"
   workflow_dispatch:
