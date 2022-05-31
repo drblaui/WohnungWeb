@@ -4,7 +4,7 @@ require('dotenv').config();
 //All links of forms
 const linkRegexes = [
 	/https:\/\/app.wohnungshelden.de\/\d*\/\d*\/property\/application\/form\/\d*\/\d*\/\d*/g,
-	/https:\/\/vermietung.degewo.de\/\d+\/\d+\/property\/application\/form\/\d+\/\d+\/\d+/g
+	/https:\/\/vermietung.degewo.de\/\d{16}\/\d{16}\/property\/application\/form\/\d{16}\/\d{7}\/\d{16}/g
 ];
 
 export function getLinks(callback: ((arg0: RegExpMatchArray) => void)) {
