@@ -1,6 +1,8 @@
 name: Autofill Forms
 
 on:
+  pull_request: 
+    branches: [ main ]
   schedule:
     - cron: "*/5 * * * *"
   workflow_dispatch:
@@ -31,9 +33,11 @@ jobs:
       HAS_WBS: ${{secrets.HAS_WBS}}
       WBS_VALID_DATE: ${{secrets.WBS_VALID_DATE}}
       WBS_NUM_ROOMS: ${{secrets.WBS_NUM_ROOMS}}
+      COULD_GET_WBS: ${{secrets.COULD_GET_WBS}}
       HAS_PETS: ${{secrets.HAS_PETS}}
       IS_COMBAT_DOG: ${{secrets.IS_COMBAT_DOG}}
       PENDING_FLAT_LOSS: ${{secrets.PENDING_FLAT_LOSS}}
       FIRST_FLAT: ${{secrets.FIRST_FLAT}}
       HAS_M_SLIP: ${{secrets.HAS_M_SLIP}}
+      DEV: ${{secrets.DEV}}
       
