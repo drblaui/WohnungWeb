@@ -36,7 +36,13 @@ export async function gewobagAutoFill(browser: playwright.Browser, link: string)
 	} 
 	await playwrightPage.type('#formly_3_input_earliestMoveInDate_2', date);
 	//WBS
-	await playwrightPage.click(`#formly_3_radio_wbs_special_housing_need_2 >> text=${formInfo.wbs ? 'Ja' : 'Nein'}`);
+	let specialHousing = await playwrightPage.$('#formly_3_radio_wbs_2');
+	if(specialHousing) {
+		await playwrightPage.click(`#formly_3_radio_wbs_2 >> text=${formInfo.wbs ? 'Ja' : 'Nein'}`);
+	}
+	else {
+		await playwrightPage.click(`#formly_3_radio_wbs_special_housing_need_2 >> text=${formInfo.wbs ? 'Ja' : 'Nein'}`);
+	}
 	if(formInfo.wbs) {
 		await playwrightPage.type('[id="formly_4_input_$$_wbs_valid_until_$$_0"]', `${formInfo.wbs_date}`);
 		await playwrightPage.click('#formly_4_select_eligibleNumberOfRooms_1');
